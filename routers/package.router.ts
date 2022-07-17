@@ -3,6 +3,15 @@ import {PackageRecord} from "../records/package.record";
 import {ValErr} from "../utils/errors";
 
 export const packageRouter = Router()
+    .delete('/:id', async (req, res) => {
+        const packageToDelete = await PackageRecord.getOnePackage(req.params.id);
+
+        if (!packageToDelete) {
+            throw new ValErr('Nie ma takiej paczki.');
+        }
+        await packageToDelete.delete();
+        res.end();
+    })
     .get('/', async (req, res) => {
         const packages = await PackageRecord.getAllPackages();
         res.json(packages);
@@ -13,12 +22,4 @@ export const packageRouter = Router()
         res.json(packageInfo);
     })
 
-    .delete('/:id', async (req, res) => {
-        const packageToDelete = await PackageRecord.getOnePackage(req.params.id);
 
-        if (!packageToDelete) {
-            throw new ValErr('Nie ma takiej paczki.');
-        }
-        await packageToDelete.delete();
-        res.end();
-    })

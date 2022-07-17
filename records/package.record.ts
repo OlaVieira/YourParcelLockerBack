@@ -52,7 +52,7 @@ export class PackageRecord implements PackageEntity {
 
     //usuwamy paczkę, jeśli ktoś ją odebrał
     async delete(): Promise<void> {
-        await pool.execute("DELETE * FROM `packages` WHERE `id` = :id", {
+        await pool.execute("DELETE FROM `packages` WHERE `id` = :id", {
             id: this.id,
         });
     }
