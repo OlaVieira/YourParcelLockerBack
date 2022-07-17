@@ -8,12 +8,12 @@ export const packageRouter = Router()
         res.json(packages);
     })
 
-    .get('/:id', async (req, res) => {
+    .get('/search/:id', async (req, res) => {
         const packageInfo = await PackageRecord.getOnePackage(req.params.id);
         res.json(packageInfo);
     })
 
-    .delete('remove/:id', async (req, res) => {
+    .delete('/:id', async (req, res) => {
         const packageToDelete = await PackageRecord.getOnePackage(req.params.id);
 
         if (!packageToDelete) {
