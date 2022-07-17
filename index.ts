@@ -4,6 +4,7 @@ import 'express-async-errors';
 import rateLimit from "express-rate-limit";
 import {handleErrors, ValErr} from "./utils/errors";
 import {packageRouter} from "./routers/package.router";
+import './utils/db';
 
 const app = express();
 
