@@ -23,7 +23,7 @@ app.use(rateLimit({
 }))
 
 //routers
-app.use('/', packageRouter);
+app.use('/packages', packageRouter);
 
 
 
