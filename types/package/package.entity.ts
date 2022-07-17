@@ -3,3 +3,7 @@ export interface PackageEntity {
     code: number;
     phone: number;
 }
+
+export interface SecPackageEntity extends Omit<PackageEntity, 'id'> {
+    id?: string;
+}
